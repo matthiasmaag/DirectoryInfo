@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class DirectoryModel {
-    public String path;
-    public int fileCounter;
-    public String filePattern;
+    private String path;
+    private int fileCounter;
+    private String filePattern;
 }
