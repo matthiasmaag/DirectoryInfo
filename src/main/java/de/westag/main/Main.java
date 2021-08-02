@@ -7,7 +7,9 @@ import javax.swing.*;
 public class Main {
     static MainController controller;
 
-    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException,
+            InstantiationException, IllegalAccessException {
+
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         controller = new MainController();
 

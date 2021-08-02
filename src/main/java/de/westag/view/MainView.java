@@ -18,7 +18,7 @@ public class MainView extends JFrame {
 
     private void initialization() {
         add(rootPanel);
-        this.pack();
+        this.setSize(600, 500);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -28,6 +28,10 @@ public class MainView extends JFrame {
 
     public String getPathFieldText() {
         return pathField.getText();
+    }
+
+    public void setPathFieldText(String pathFieldText) {
+        pathField.setText(pathFieldText);
     }
 
     /**

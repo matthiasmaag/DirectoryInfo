@@ -28,7 +28,7 @@ public class MainController {
 
     private void addListener() {
         view.setPathBtnListener(new PathBtnListener());
-        view.setAnalyseBtnListener(new ResetFormListener());
+        view.setAnalyseBtnListener(new StartAnalysisListener());
     }
 
     /**
@@ -38,12 +38,19 @@ public class MainController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // todo open DirectoryBrowser
-            model.setPath(view.getPathFieldText());
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new java.io.File("."));
+            fileChooser.setDialogTitle("Ordnerauswahl");
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                model.setPath(fileChooser.getCurrentDirectory().getPath());
+                view.setPathFieldText(fileChooser.getCurrentDirectory().getPath());
+            }
         }
     }
 
-    class ResetFormListener implements ActionListener{
+    class StartAnalysisListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
