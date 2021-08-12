@@ -1,6 +1,7 @@
 package de.westag.view;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
@@ -10,6 +11,7 @@ public class MainView extends JFrame {
     private JButton analyseBtn;
     private JTable table1;
     private JLabel pathLabel;
+    private String columns[];
 
     public MainView() {
         super("DirectoryInfo");
@@ -32,6 +34,12 @@ public class MainView extends JFrame {
 
     public void setPathFieldText(String pathFieldText) {
         pathField.setText(pathFieldText);
+    }
+
+    public void setTableColumns() {
+        TableColumn column = new TableColumn();
+        column.setHeaderValue("Hallo");
+        table1.addColumn(column);
     }
 
     /**

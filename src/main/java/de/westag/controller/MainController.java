@@ -24,6 +24,7 @@ public class MainController {
     }
 
     public void showView() {
+        view.setTableColumns();
         view.setVisible(true);
     }
 
