@@ -18,6 +18,10 @@ public class DirectoryService {
         resultMap = new HashMap<>();
     }
 
+    public Map<String, Integer> getResultMap(){
+        return resultMap;
+    }
+
     public void StartAnalysis() {
 
     }

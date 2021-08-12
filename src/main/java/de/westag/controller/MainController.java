@@ -1,6 +1,7 @@
 package de.westag.controller;
 
 import de.westag.model.DirectoryModel;
+import de.westag.service.DirectoryService;
 import de.westag.view.MainView;
 
 import javax.swing.*;
@@ -43,9 +44,9 @@ public class MainController {
             fileChooser.setDialogTitle("Ordnerauswahl");
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.setAcceptAllFileFilterUsed(false);
-            if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                model.setPath(fileChooser.getCurrentDirectory().getPath());
-                view.setPathFieldText(fileChooser.getCurrentDirectory().getPath());
+            if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {                
+                model.setPath(fileChooser.getSelectedFile().getAbsolutePath());
+                view.setPathFieldText(fileChooser.getSelectedFile().getAbsolutePath());
             }
         }
     }
@@ -54,7 +55,9 @@ public class MainController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            view.resetView();
+            // todo start a new thread that begins the analysis
+            DirectoryService service = new DirectoryService(model.getPath());
+            service.StartAnalysis();
         }
     }
 }
