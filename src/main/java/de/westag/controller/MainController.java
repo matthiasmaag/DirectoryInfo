@@ -1,6 +1,6 @@
 package de.westag.controller;
 
-import de.westag.model.DirectoryModel;
+import de.westag.model.SearchParams;
 import de.westag.service.DirectoryService;
 import de.westag.view.MainView;
 
@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
 public class MainController {
 
     private MainView view;
-    private DirectoryModel model;
+    private SearchParams searchParams;
 
     public MainController() {
-        model = new DirectoryModel();
+        searchParams = new SearchParams();
         view = new MainView();
 
         addListener();
@@ -46,7 +46,7 @@ public class MainController {
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.setAcceptAllFileFilterUsed(false);
             if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {                
-                model.setPath(fileChooser.getSelectedFile().getAbsolutePath());
+                searchParams.setPath(fileChooser.getSelectedFile().getAbsolutePath());
                 view.setPathFieldText(fileChooser.getSelectedFile().getAbsolutePath());
             }
         }
@@ -57,7 +57,7 @@ public class MainController {
         @Override
         public void actionPerformed(ActionEvent e) {
             // todo start a new thread that begins the analysis
-            DirectoryService service = new DirectoryService(model.getPath());
+            DirectoryService service = new DirectoryService(searchParams);
             service.StartAnalysis();
         }
     }

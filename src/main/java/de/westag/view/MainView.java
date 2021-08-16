@@ -20,7 +20,7 @@ public class MainView extends JFrame {
 
     private void initialization() {
         add(rootPanel);
-        this.setSize(600, 500);
+        this.setSize(1024, 768);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
